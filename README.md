@@ -69,6 +69,11 @@ All kernels are in `sample_kernels/` (symlinked from CUTLASS examples) and targe
 | `87b_blackwell_geforce_fp8_bf16_gemm_groupwise` | FP8 → BF16 groupwise GEMM |
 | `87c_blackwell_geforce_fp8_bf16_grouped_gemm_groupwise` | FP8 → BF16 grouped groupwise GEMM |
 
+### 91_fp4_gemv
+| Binary | Description |
+|--------|-------------|
+| `91_fp4_gemv` | FP4 GEMV (matrix-vector product) |
+
 ## Testing
 
 ```bash

@@ -82,6 +82,12 @@ if(CUTLASS_AVAILABLE)
     target_link_libraries(87c_blackwell_geforce_fp8_bf16_grouped_gemm_groupwise CUDA::cudart)
     set_property(TARGET 87c_blackwell_geforce_fp8_bf16_grouped_gemm_groupwise PROPERTY CUDA_ARCHITECTURES ${CMAKE_CUDA_ARCHITECTURES})
 
+    # 91_fp4_gemv
+    add_executable(91_fp4_gemv
+        ${CMAKE_SOURCE_DIR}/sample_kernels/91_fp4_gemv.cu)
+    target_link_libraries(91_fp4_gemv CUDA::cudart)
+    set_property(TARGET 91_fp4_gemv PROPERTY CUDA_ARCHITECTURES ${CMAKE_CUDA_ARCHITECTURES})
+
 else()
     message(STATUS "Skipping Blackwell kernels (CUTLASS not found)")
 endif()
@@ -98,6 +104,7 @@ if(CUTLASS_AVAILABLE)
     add_test(NAME 87a_blackwell_geforce_fp8_bf16_gemm_blockwise COMMAND 87a_blackwell_geforce_fp8_bf16_gemm_blockwise)
     add_test(NAME 87b_blackwell_geforce_fp8_bf16_gemm_groupwise COMMAND 87b_blackwell_geforce_fp8_bf16_gemm_groupwise)
     add_test(NAME 87c_blackwell_geforce_fp8_bf16_grouped_gemm_groupwise COMMAND 87c_blackwell_geforce_fp8_bf16_grouped_gemm_groupwise)
+    add_test(NAME 91_fp4_gemv COMMAND 91_fp4_gemv)
 endif()
 
 # Build:  cmake -B build && cmake --build build
