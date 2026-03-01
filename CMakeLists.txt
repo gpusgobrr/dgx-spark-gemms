@@ -88,6 +88,12 @@ if(CUTLASS_AVAILABLE)
     target_link_libraries(91_fp4_gemv CUDA::cudart)
     set_property(TARGET 91_fp4_gemv PROPERTY CUDA_ARCHITECTURES ${CMAKE_CUDA_ARCHITECTURES})
 
+    # Competition kernels (nvcomp/)
+    add_executable(nvfp4_gemv
+        ${CMAKE_SOURCE_DIR}/nvcomp/nvfp4_gemv.cu)
+    target_link_libraries(nvfp4_gemv CUDA::cudart)
+    set_property(TARGET nvfp4_gemv PROPERTY CUDA_ARCHITECTURES ${CMAKE_CUDA_ARCHITECTURES})
+
 else()
     message(STATUS "Skipping Blackwell kernels (CUTLASS not found)")
 endif()
